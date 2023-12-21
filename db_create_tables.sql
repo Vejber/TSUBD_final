@@ -70,10 +70,11 @@ CREATE TABLE Events (
 -- Airports_Flights Table
 
 CREATE TABLE Airports_Flights (
-    airport_id INT,
+    airport_departure_id INT,
+    airport_arrival_id INT,
     flight_id INT,
-    PRIMARY KEY (airport_id, flight_id),
-    FOREIGN KEY (airport_id) REFERENCES Airports(airport_id),
+    FOREIGN KEY (airport_departure_id) REFERENCES Airports(airport_id),
+    FOREIGN KEY (airport_arrival_id) REFERENCES Airports(airport_id),
     FOREIGN KEY (flight_id) REFERENCES Flights(flight_id)
 );
 
@@ -92,7 +93,7 @@ CREATE TABLE Crews (
     crew_id INT AUTO_INCREMENT PRIMARY KEY,
     flight_id INT,
     name VARCHAR(255),
-    time_of_flight TIME,
+    time_of_flight VARCHAR(100),
     FOREIGN KEY (flight_id) REFERENCES Flights(flight_id)
 );
 
